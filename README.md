@@ -15,7 +15,7 @@ which does single-card search well but caps multi-card search at ten cards.
 Needs Python 3 and `curl`, both of which macOS already has. Nothing to install.
 
 ```bash
-cd ~/Documents/Claude/Projects/MTGCompare && ./run.sh
+cd ~/Documents/04 Projects/3-MTG Compare/mtg-compare && ./run.sh
 ```
 
 (That's this project's location on this Mac. On a different machine — e.g. after
