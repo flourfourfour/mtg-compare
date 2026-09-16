@@ -1,0 +1,5 @@
+# Machine-specific working data, not source. Rebuild after cloning:
+#   the shop list reseeds itself on first run
+#   the catalogue index: press "Build / refresh catalogues" in the app (~10 min)
+#   the cache is disposable and regenerates itself as you search
+data/

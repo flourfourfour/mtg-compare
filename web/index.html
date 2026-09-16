@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MTG Compare</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🃏</text></svg>">
+</head>
+<body>
+<header class="masthead">
+  <h1>MTG&nbsp;Compare</h1>
+  <p class="tagline">Paste a decklist. Find who in the UK has it in stock, for the least money.</p>
+</header>
+
+<main>
+  <section class="panel" id="panel-list">
+    <h2><span class="step">1</span> Your decklist</h2>
+    <textarea id="decklist" rows="12" spellcheck="false"
+      placeholder="4 Lightning Bolt&#10;1 Sol Ring&#10;2 Snapcaster Mage (MH2) 401&#10;Brainstorm x3"></textarea>
+    <div class="row">
+      <button id="check" class="primary">Check card names</button>
+      <button id="load-sample" class="ghost">Load a sample list</button>
+      <span id="parse-status" class="status"></span>
+    </div>
+    <div id="parse-output"></div>
+  </section>
+
+  <section class="panel" id="panel-options" hidden>
+    <h2><span class="step">2</span> What you'll accept</h2>
+    <div class="options">
+      <label>Condition
+        <select id="opt-condition">
+          <option value="0" selected>Near Mint only</option>
+          <option value="1">Near Mint or Lightly Played</option>
+          <option value="2">Down to Moderately Played</option>
+          <option value="4">Anything in stock</option>
+        </select>
+      </label>
+      <label>Finish
+        <select id="opt-foil">
+          <option value="any" selected>Any (cheapest wins)</option>
+          <option value="non-foil">Non-foil only</option>
+          <option value="foil">Foil only</option>
+        </select>
+      </label>
+      <label>Split across at most
+        <select id="opt-max-shops">
+          <option value="">No limit</option>
+          <option value="1">1 shop</option>
+          <option value="2">2 shops</option>
+          <option value="3" selected>3 shops</option>
+          <option value="4">4 shops</option>
+          <option value="5">5 shops</option>
+        </select>
+      </label>
+      <label class="check"><input type="checkbox" id="opt-fresh"> Ignore cached prices</label>
+    </div>
+    <div class="row">
+      <button id="go" class="primary">Search UK shops</button>
+      <span id="search-status" class="status"></span>
+    </div>
+    <div class="progress" id="progress" hidden><div class="bar" id="progress-bar"></div></div>
+    <p class="note">First run takes a few minutes: the shops sit behind bot protection, so requests are
+      deliberately slow and spaced out. Results are cached for a few hours, so a repeat search is quick.</p>
+  </section>
+
+  <section class="panel" id="panel-plan" hidden>
+    <h2><span class="step">3</span> Your buy plan</h2>
+    <div id="plan-summary"></div>
+    <div class="row" id="plan-export" hidden>
+      <a id="export-csv" download><button class="ghost">Export as CSV</button></a>
+      <a id="export-txt" download><button class="ghost">Export as a shopping list</button></a>
+    </div>
+    <div id="plan-shops"></div>
+    <div id="plan-missing"></div>
+  </section>
+
+  <section class="panel" id="panel-manual" hidden>
+    <h2>Check these two yourself</h2>
+    <p class="note" id="manual-why"></p>
+    <div id="manual-links"></div>
+  </section>
+
+  <section class="panel" id="panel-all" hidden>
+    <h2>Every price found</h2>
+    <p class="note">Cheapest in-stock listing per shop, for each card on your list.</p>
+    <div class="table-wrap"><table id="grid"></table></div>
+  </section>
+
+  <section class="panel" id="panel-index">
+    <h2>Shop catalogues</h2>
+    <p class="note">Each shop's full range is indexed locally so searches don't have to ask
+      twelve shops about every card. The index only decides which listings are worth checking —
+      every price you see is fetched live at search time, so an old index costs you coverage,
+      never accuracy.</p>
+    <div class="row">
+      <button id="build-index" class="primary">Build / refresh catalogues</button>
+      <button id="stop-index" class="ghost" hidden>Stop</button>
+      <span id="index-status" class="status"></span>
+    </div>
+    <div class="progress" id="index-progress" hidden><div class="bar" id="index-bar"></div></div>
+    <div class="table-wrap"><table id="index-table"></table></div>
+  </section>
+
+  <section class="panel" id="panel-stores">
+    <h2>Shops</h2>
+    <p class="note">Untick a shop to leave it out of searches and catalogue builds.</p>
+    <p class="note warn" id="store-warning" hidden></p>
+    <div class="table-wrap"><table id="stores-table"></table></div>
+    <div class="row">
+      <button id="save-stores" class="primary">Save</button>
+      <span id="stores-status" class="status"></span>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Runs entirely on your machine. Prices and stock come from each shop's own storefront and can
+    change between this page and their checkout — always confirm in the basket before paying.
+    Totals are for cards only; each shop adds its own delivery charge at its checkout.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
