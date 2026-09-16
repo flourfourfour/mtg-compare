@@ -15,8 +15,11 @@ which does single-card search well but caps multi-card search at ten cards.
 Needs Python 3 and `curl`, both of which macOS already has. Nothing to install.
 
 ```bash
-./run.sh
+cd ~/Documents/Claude/Projects/MTGCompare && ./run.sh
 ```
+
+(That's this project's location on this Mac. On a different machine — e.g. after
+`git clone` — use wherever you put it instead.)
 
 It prints a `http://127.0.0.1:8777/` address and opens your browser there.
 Stop it with Ctrl-C.
