@@ -15,11 +15,10 @@ which does single-card search well but caps multi-card search at ten cards.
 Needs Python 3 and `curl`, both of which macOS already has. Nothing to install.
 
 ```bash
-cd ~/Documents/04 Projects/3-MTG Compare/mtg-compare && ./run.sh
+git clone https://github.com/flourfourfour/mtg-compare.git
+cd mtg-compare
+./run.sh
 ```
-
-(That's this project's location on this Mac. On a different machine — e.g. after
-`git clone` — use wherever you put it instead.)
 
 It prints a `http://127.0.0.1:8777/` address and opens your browser there.
 Stop it with Ctrl-C.
