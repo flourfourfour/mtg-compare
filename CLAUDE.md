@@ -89,14 +89,14 @@ Zero external dependencies: stdlib Python 3 + `curl` (already on macOS). No npm,
 - Only Shopify shops are searched automatically. Non-Shopify UK shops not yet covered: Magic Madhouse (BigCommerce), Chaos Cards, Patriot Games Leeds (Zen Cart) — each would need its own adapter, none attempted yet.
 - Stock *quantity* is invisible on Shopify (available/unavailable only, no count). CrystalCommerce shops do expose it, for whenever/if that platform gets added.
 - The listing matcher (`matching.py`) is conservative by design — it will occasionally miss a real listing rather than risk a false positive (wrong card in the basket). If a card that should clearly be in stock somewhere comes back empty, check the shop's actual title format against `matching.title_matches()` before assuming it's out of stock.
-- No git repo. Consider `git init` if ongoing multi-machine work is expected — nothing here is a secret, all data is either regeneratable (the index, the cache) or a plain shop list (`stores.json`).
 
 ## Moving this project to another machine
 
 Tracked in git; `data/` is gitignored on purpose — it's regenerated working data, not source, and shouldn't travel with the code (the shop list reseeds itself, the search cache is disposable, the catalogue index rebuilds in ~10 minutes across 13 shops). Needs Python 3 and `curl`, both standard on macOS; nothing to `pip install`.
 
 ```bash
-git clone <repo-url> && cd MTGCompare
+git clone https://github.com/flourfourfour/mtg-compare.git
+cd mtg-compare
 ./run.sh                      # first run seeds data/stores.json automatically
 # then in the app: "Build / refresh catalogues" (~10 min, one-off)
 ```
