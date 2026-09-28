@@ -156,3 +156,20 @@ data/
 Add a candidate domain to `tools/probe_stores.py` and run it. If it reports
 `shopify`, add the shop to `DEFAULT_STORES` in `mtgcompare/stores.py` and delete
 `data/stores.json` so it gets reseeded.
+
+## Contributing
+
+1. Fork this repo (the "Fork" button, top right of the GitHub page).
+2. Clone your fork and make your changes there:
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/mtg-compare.git
+   cd mtg-compare
+   ```
+3. Commit and push to your fork, then open a Pull Request from your fork back
+   to this repo — GitHub will prompt you to do this as soon as you push.
+
+No need to ask first; a PR is the ask. Small, focused changes are easier to
+review than large ones. If you're touching `mtgcompare/netcache.py`'s rate
+limits or the search/index logic, see `CLAUDE.md` first — several of the
+choices in there came from a real bug, not a guess, and the comments explain
+why.
