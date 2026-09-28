@@ -20,8 +20,13 @@ cd mtg-compare
 ./run.sh
 ```
 
-It prints a `http://127.0.0.1:8777/` address and opens your browser there.
-Stop it with Ctrl-C.
+Or, once you've cloned it, skip the terminal entirely: double-click
+**`Start MTG Compare.command`** in Finder. First double-click, macOS will warn
+it's from an unidentified developer — right-click it instead and choose
+**Open** once, and it'll run normally from then on.
+
+Either way, it prints a `http://127.0.0.1:8777/` address and opens your browser
+there. To stop it, close the terminal window it's running in (or press Ctrl-C).
 
 ## How it works
 

@@ -16,6 +16,9 @@ Two servers may be running locally from earlier sessions — check `lsof -ti :87
 
 ```
 run.sh                start the app (wraps server.py)
+Start MTG Compare.command   Finder double-click wrapper around run.sh — for
+                       anyone who'd rather not use a terminal. No logic of
+                       its own; keep it that way if you touch it.
 server.py             stdlib HTTP server + JSON API, no framework, no dependencies
 mtgcompare/
   netcache.py          HTTP transport: pooled connections, rate limiting, backoff, disk cache
